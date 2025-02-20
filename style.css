@@ -1,24 +1,30 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: rgb(7, 65, 172);
+    background-color: rgb(213, 222, 239);
     text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ensures the body takes the full viewport height */
+    height: 100vh;
 }
 
+/* Container to center game */
 .container {
     height: 70vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+/* Tic-Tac-Toe Grid */
 .game {
     height: 60vmin;
     width: 60vmin;
@@ -29,28 +35,88 @@ body {
     gap: 1.5vmin;
 }
 
+/* Boxes (cells) */
 .box {
     height: 18vmin;
     width: 18vmin;
     border-radius: 1rem;
     border: none;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
     font-size: 10vmin;
+    font-weight: bold;
     color: #b0413e;
     background-color: #ffffc7;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+.box:hover {
+    background-color: #ffe680;
 }
-#reset{
-    padding: 1rem;
+
+/* Highlight the winning boxes */
+.win {
+    background-color: #28a745 !important;
+    color: white !important;
+    animation: winnerGlow 1s infinite alternate;
+}
+
+/* Winner glow effect */
+@keyframes winnerGlow {
+    0% {
+        box-shadow: 0 0 10px #28a745;
+    }
+    100% {
+        box-shadow: 0 0 20px #28a745;
+    }
+}
+
+/* Buttons */
+button {
+    margin-top: 20px;
+    padding: 1rem 2rem;
     font-size: 1.25rem;
-    background-color: rgb(207, 16, 16);
+    font-weight: bold;
+    color: white;
     border: none;
     border-radius: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
-#new{
-    padding: 1rem;
-    font-size: 1.25rem;
+
+#reset,
+#new-game {
     background-color: rgb(207, 16, 16);
-    border: none;
-    border-radius: 1rem;
+    margin: 10px;
+}
+
+#reset:hover,
+#new-game:hover {
+    background-color: rgb(180, 10, 10);
+}
+
+/* Winner message */
+#winner {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .game {
+        width: 90vmin;
+        height: 90vmin;
+    }
+    .box {
+        height: 25vmin;
+        width: 25vmin;
+        font-size: 12vmin;
+    }
+    #winner {
+        font-size: 1.5rem;
+    }
 }
